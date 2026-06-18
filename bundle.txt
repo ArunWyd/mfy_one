@@ -1,0 +1,6 @@
+!pip install -q torch transformers "optimum[onnxruntime]" onnx onnxruntime sentencepiece
+!python -m optimum.exporters.onnx --model google/flan-t5-small --task text2text-generation-with-past flan_t5_small_raw
+!find flan_t5_small_raw -type f
+!zip -r flan_t5_small_bundle.zip flan_t5_small_raw
+from google.colab import files
+files.download("flan_t5_small_bundle.zip")
